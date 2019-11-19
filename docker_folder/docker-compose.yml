@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  mysql.pagamento:
+    image: mysql:5.7
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: caelum123
+      MYSQL_DATABASE: eats_pagamento
+      MYSQL_USER: pagamento
+      MYSQL_PASSWORD: pagamento123
+    volumes: 
+      - db-storage:/var/lib/mysql  
+    
+  mongo.distancia:
+   image: mongo:3.6
+   ports:
+      - "27018:27017"
+   volumes:
+      - document-db-storage:/data/db
+
+volumes:
+  db-storage:
+    external: true
+  document-db-storage:
+    external: true
